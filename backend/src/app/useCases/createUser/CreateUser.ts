@@ -1,13 +1,12 @@
 import {getRepository, Repository} from 'typeorm';
 import {hash} from 'bcryptjs';
 import User from '../../models/User';
-import IcreateUserDTO from './IcreateUserDTO';
-
+import IcreateUserRequestDTO from './IcreateUserRequestDTO';
 
 
 export default class CreateUser{
   
-  public async insertUser({name, user_login, password}: IcreateUserDTO): Promise<User>{
+  public async insertUser({name, user_login, password}: IcreateUserRequestDTO): Promise<User>{
     const userRepository =  await getRepository(User);
     
     const userLoginExist = await userRepository.findOne({

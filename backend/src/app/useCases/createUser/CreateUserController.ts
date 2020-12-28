@@ -1,7 +1,7 @@
 import {Request, Response} from 'express';
-import CreateUser from '../useCases/createUser/CreateUser';
+import CreateUser from './CreateUser';
 
-export default class UserController{
+export default class CreateUserController{
 
   public async store(request: Request, response: Response): Promise<Response>{
     try{

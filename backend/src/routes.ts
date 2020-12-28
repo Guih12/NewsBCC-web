@@ -1,7 +1,8 @@
 import { Router} from 'express';
-import UserController from './app/controllers/UserController';
 
-const userController = new UserController();
+import CreateUserControler from './app/useCases/createUser/CreateUserController';
+
+const createUserControler = new CreateUserControler();
 
 const route = Router();
 
@@ -9,6 +10,7 @@ route.get('/', (request, response) =>{
   return response.json({message: 'Seja vem'})
 })
 
-route.post('/users', userController.store);
+route.post('/users', createUserControler.store)
+
 
 export default route;
