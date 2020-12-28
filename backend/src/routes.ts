@@ -4,7 +4,7 @@ import { Router} from 'express';
 const route = Router();
 
 route.get('/', (request, response) =>{
-  return response.json({message: 'Seja bem vindo'})
+  return response.json({message: 'Seja vem'})
 })
 
 
