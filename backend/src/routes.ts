@@ -1,8 +1,11 @@
 import { Router} from 'express';
 
-import CreateUserControler from './app/useCases/createUser/CreateUserController';
+import UserController from './app/useCases/keepUser/UserController';
+import CategoryController from './app/useCases/keepCategory/CategoryController';
 
-const createUserControler = new CreateUserControler();
+const userController = new UserController();
+const categoryController = new CategoryController();
+
 
 const route = Router();
 
@@ -10,7 +13,12 @@ route.get('/', (request, response) =>{
   return response.json({message: 'Seja vem'})
 })
 
-route.post('/users', createUserControler.store)
+//routes the users
+route.get('/users', userController.showUsers);
+route.post('/users', userController.store)
+
+//routes the category
+route.post('/category', categoryController.store)
 
 
 export default route;

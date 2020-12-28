@@ -1,5 +1,6 @@
 import {Request, Response} from 'express';
 import CreateUser from './CreateUser';
+import ListUser from './ListUser';
 
 export default class CreateUserController{
 
@@ -14,6 +15,15 @@ export default class CreateUserController{
     }catch(err){
       return response.status(400).json({error:err.message});
     }
+  }
 
+  public async showUsers(request: Request,response: Response): Promise<Response>{
+    try{
+      const listUser  = new ListUser();
+      const users = await listUser.getListUserAll();
+      return response.status(200).json(users);
+    }catch(err){
+      return response.status(400).json({erro: err.message});
+    }
   }
 }
